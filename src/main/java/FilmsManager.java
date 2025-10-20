@@ -1,21 +1,18 @@
 public class FilmsManager {
-    private Films[] catalogFilms;
+    private Films[] catalogFilms = new Films[0];
+    private int count;
 
     public FilmsManager() {
-        catalogFilms = new Films[5];
+        count = 5;
     }
 
     public FilmsManager(int count) {
-        catalogFilms = new Films[count];
+        this.count = count;
     }
 
     public void saveFilms(Films film) {
         Films[] tmp = new Films[catalogFilms.length + 1];
         for (int i = 0; i < catalogFilms.length; i++) {
-            if (catalogFilms[i] == null) {
-                catalogFilms[i] = film;
-                return;
-            }
             tmp[i] = catalogFilms[i];
         }
         tmp[tmp.length - 1] = film;
@@ -28,8 +25,8 @@ public class FilmsManager {
 
     public Films[] findLast() {
         Films[] reversed;
-        if (catalogFilms.length != 5) {
-            reversed = new Films[catalogFilms.length];
+        if (count != 5) {
+            reversed = new Films[count];
         } else {
             reversed = new Films[5];
         }
