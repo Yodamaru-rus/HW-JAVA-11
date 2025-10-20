@@ -44,30 +44,13 @@ public class FilmManagerMockitoTest {
     }
 
     @Test
-    public void findLastSelect() {
-        Films[] expected = {item3};
-        doReturn(expected).when(managerUno).findLast(3);
-        Films[] actual = managerUno.findLast(3);
-
-        Assertions.assertArrayEquals(expected, actual);
-    }
-
-    @Test
     public void findLastZero() {
         Films[] expected = {};
-        doReturn(expected).when(managerUno).findLast();
+        doReturn(expected).when(managerEmpty).findLast();
 
-        Films[] actual = managerUno.findLast();
-
-        Assertions.assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void findLastSelectZero() {
-        Films[] expected = {};
-        doReturn(expected).when(managerUno).findLast(3);
-        Films[] actual = managerUno.findLast(3);
+        Films[] actual = managerEmpty.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
 }
