@@ -24,12 +24,7 @@ public class FilmsManager {
     }
 
     public Films[] findLast() {
-        Films[] reversed;
-        if (count != 5) {
-            reversed = new Films[count];
-        } else {
-            reversed = new Films[5];
-        }
+        Films[] reversed = new Films[count];
         for (int i = 0; i < reversed.length; i++) {
             reversed[i] = catalogFilms[catalogFilms.length - 1 - i];
         }
