@@ -6,6 +6,7 @@ public class FilmManagerTest {
 
     FilmsManager manager = new FilmsManager();
     FilmsManager managerThree = new FilmsManager(3);
+    FilmsManager managerTwo = new FilmsManager(8);
     Films item1 = new Films("Вперед", "Мультфильм", "https://i.pinimg.com/550x/23/75/4b/23754b0b1fc5d35c1ee3159ae7cf6acc.jpg");
     Films item2 = new Films("Отель \"Белград\"", "Комедия", "https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_653d31cb0adfb46cc4c935f8_653d31e35109d81c967220b6/scale_1200");
     Films item3 = new Films("Джентельмены", "Боевик", "https://images.kinorium.com/movie/poster/1670490/w1500_52002354.jpg");
@@ -28,9 +29,8 @@ public class FilmManagerTest {
         managerThree.saveFilms(item3);
         managerThree.saveFilms(item4);
         managerThree.saveFilms(item5);
-        managerThree.saveFilms(item6);
-        managerThree.saveFilms(item7);
-        managerThree.saveFilms(item8);
+        managerTwo.saveFilms(item1);
+        managerTwo.saveFilms(item6);
 
 
     }
@@ -46,7 +46,7 @@ public class FilmManagerTest {
 
     @Test
     public void findElementThree() {
-        Films[] expected = {item3, item4, item5, item6, item7, item8};
+        Films[] expected = {item3, item4, item5};
 
         Films[] actual = managerThree.findAll();
 
@@ -64,9 +64,19 @@ public class FilmManagerTest {
 
     @Test
     public void findLastThree() {
-        Films[] expected = {item8, item7, item6};
+        Films[] expected = {item5, item4, item3};
 
         Films[] actual = managerThree.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void findLastBigger() {
+
+        Films[] expected = {item6, item1};
+
+        Films[] actual = managerTwo.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
     }
